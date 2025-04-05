@@ -70,9 +70,13 @@ struct ContentView: View {
                         .foregroundColor(Color(red: 0.18, green: 0.21, blue: 0.33))
                 }
             }
-            .padding(.vertical, 20)
+            .padding(.vertical, 15)
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.horizontal)
+            .background(
+                RoundedRectangle(cornerRadius: 16)
+                    .fill(Color.white.opacity(0.5))
+            )
             .overlay(
                 RoundedRectangle(cornerRadius: 16)
                     .stroke(Color.gray.opacity(0.2), lineWidth: 1)
@@ -90,7 +94,7 @@ struct ContentView: View {
                     .padding()
                     .background(
                         RoundedRectangle(cornerRadius: 16)
-                            .fill(Color.blue)
+                            .fill(Color(red: 0.239, green: 0.482, blue: 0.945))  // #3D7BF1
                     )
             }
             .padding(.horizontal)
