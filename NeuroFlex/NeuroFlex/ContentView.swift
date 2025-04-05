@@ -10,14 +10,17 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         VStack(spacing: 40) {
+            Spacer()
+                .frame(height: 80)  // Increased from 40 to push welcome lower
+                
             // Welcome section
-            VStack(alignment: .leading, spacing: 10) {
+            VStack(alignment: .leading, spacing: 5) {
                 Text("Welcome!")
-                    .font(.system(size: 48, weight: .bold))
+                    .font(.system(size: 42, weight: .bold))
                     .foregroundColor(Color(red: 0.18, green: 0.21, blue: 0.33))
                 
                 Text("Let's work together to stop hyperextending your joints and improve your proprioception.")
-                    .font(.system(size: 24))
+                    .font(.system(size: 18))
                     .foregroundColor(Color(red: 0.18, green: 0.21, blue: 0.33))
                     .fixedSize(horizontal: false, vertical: true)
             }
@@ -27,7 +30,7 @@ struct ContentView: View {
             Image("logo")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .frame(width: 200, height: 200)
+                .frame(width: 280, height: 280)
             
             // Today's Progress section
             VStack(alignment: .leading, spacing: 20) {
@@ -75,8 +78,6 @@ struct ContentView: View {
             )
             .padding(.horizontal)
             
-            Spacer()
-            
             // Get Started button
             Button(action: {
                 // Nothing happens for now
@@ -87,15 +88,18 @@ struct ContentView: View {
                     .frame(maxWidth: .infinity)
                     .padding()
                     .background(
-                        RoundedRectangle(cornerRadius: 30)
+                        RoundedRectangle(cornerRadius: 16)
                             .fill(Color.blue)
                     )
             }
             .padding(.horizontal)
+            
+            Spacer()
+                .frame(height: 20)  // Reduced from 40 to bring button higher
         }
         .padding(.vertical)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color(red: 0.95, green: 0.95, blue: 0.97).ignoresSafeArea())
+        .background(Color(red: 0.976, green: 0.949, blue: 0.929).ignoresSafeArea())
     }
 }
 
