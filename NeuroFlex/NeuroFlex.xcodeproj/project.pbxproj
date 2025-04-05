@@ -7,62 +7,61 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BA2F8BF62DA1B788005E2CF0 /* NeuroFlexApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2F8BF52DA1B788005E2CF0 /* NeuroFlexApp.swift */; };
-		BA2F8BF82DA1B788005E2CF0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2F8BF72DA1B788005E2CF0 /* ContentView.swift */; };
-		BA2F8BFA2DA1B78B005E2CF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA2F8BF92DA1B78B005E2CF0 /* Assets.xcassets */; };
-		BA2F8BFD2DA1B78B005E2CF0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA2F8BFC2DA1B78B005E2CF0 /* Preview Assets.xcassets */; };
-		BA2F8C082DA1B78B005E2CF0 /* NeuroFlexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2F8C072DA1B78B005E2CF0 /* NeuroFlexTests.swift */; };
-		BA2F8C122DA1B78B005E2CF0 /* NeuroFlexUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2F8C112DA1B78B005E2CF0 /* NeuroFlexUITests.swift */; };
-		BA2F8C142DA1B78B005E2CF0 /* NeuroFlexUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2F8C132DA1B78B005E2CF0 /* NeuroFlexUITestsLaunchTests.swift */; };
+		BA2F8C2D2DA1E71B005E2CF0 /* NeuroFlexApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2F8C2C2DA1E71B005E2CF0 /* NeuroFlexApp.swift */; };
+		BA2F8C2F2DA1E71B005E2CF0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2F8C2E2DA1E71B005E2CF0 /* ContentView.swift */; };
+		BA2F8C312DA1E71D005E2CF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA2F8C302DA1E71D005E2CF0 /* Assets.xcassets */; };
+		BA2F8C342DA1E71D005E2CF0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA2F8C332DA1E71D005E2CF0 /* Preview Assets.xcassets */; };
+		BA2F8C3E2DA1E71E005E2CF0 /* NeuroFlexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2F8C3D2DA1E71E005E2CF0 /* NeuroFlexTests.swift */; };
+		BA2F8C482DA1E71E005E2CF0 /* NeuroFlexUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2F8C472DA1E71E005E2CF0 /* NeuroFlexUITests.swift */; };
+		BA2F8C4A2DA1E71E005E2CF0 /* NeuroFlexUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2F8C492DA1E71E005E2CF0 /* NeuroFlexUITestsLaunchTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		BA2F8C042DA1B78B005E2CF0 /* PBXContainerItemProxy */ = {
+		BA2F8C3A2DA1E71E005E2CF0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = BA2F8BEA2DA1B788005E2CF0 /* Project object */;
+			containerPortal = BA2F8C212DA1E71B005E2CF0 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = BA2F8BF12DA1B788005E2CF0;
+			remoteGlobalIDString = BA2F8C282DA1E71B005E2CF0;
 			remoteInfo = NeuroFlex;
 		};
-		BA2F8C0E2DA1B78B005E2CF0 /* PBXContainerItemProxy */ = {
+		BA2F8C442DA1E71E005E2CF0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = BA2F8BEA2DA1B788005E2CF0 /* Project object */;
+			containerPortal = BA2F8C212DA1E71B005E2CF0 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = BA2F8BF12DA1B788005E2CF0;
+			remoteGlobalIDString = BA2F8C282DA1E71B005E2CF0;
 			remoteInfo = NeuroFlex;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		BA2F8BF22DA1B788005E2CF0 /* NeuroFlex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NeuroFlex.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		BA2F8BF52DA1B788005E2CF0 /* NeuroFlexApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeuroFlexApp.swift; sourceTree = "<group>"; };
-		BA2F8BF72DA1B788005E2CF0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		BA2F8BF92DA1B78B005E2CF0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		BA2F8BFC2DA1B78B005E2CF0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		BA2F8BFE2DA1B78B005E2CF0 /* NeuroFlex.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NeuroFlex.entitlements; sourceTree = "<group>"; };
-		BA2F8C032DA1B78B005E2CF0 /* NeuroFlexTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NeuroFlexTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		BA2F8C072DA1B78B005E2CF0 /* NeuroFlexTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeuroFlexTests.swift; sourceTree = "<group>"; };
-		BA2F8C0D2DA1B78B005E2CF0 /* NeuroFlexUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NeuroFlexUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		BA2F8C112DA1B78B005E2CF0 /* NeuroFlexUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeuroFlexUITests.swift; sourceTree = "<group>"; };
-		BA2F8C132DA1B78B005E2CF0 /* NeuroFlexUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeuroFlexUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		BA2F8C292DA1E71B005E2CF0 /* NeuroFlex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NeuroFlex.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA2F8C2C2DA1E71B005E2CF0 /* NeuroFlexApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeuroFlexApp.swift; sourceTree = "<group>"; };
+		BA2F8C2E2DA1E71B005E2CF0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		BA2F8C302DA1E71D005E2CF0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BA2F8C332DA1E71D005E2CF0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		BA2F8C392DA1E71E005E2CF0 /* NeuroFlexTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NeuroFlexTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA2F8C3D2DA1E71E005E2CF0 /* NeuroFlexTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeuroFlexTests.swift; sourceTree = "<group>"; };
+		BA2F8C432DA1E71E005E2CF0 /* NeuroFlexUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NeuroFlexUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA2F8C472DA1E71E005E2CF0 /* NeuroFlexUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeuroFlexUITests.swift; sourceTree = "<group>"; };
+		BA2F8C492DA1E71E005E2CF0 /* NeuroFlexUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeuroFlexUITestsLaunchTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		BA2F8BEF2DA1B788005E2CF0 /* Frameworks */ = {
+		BA2F8C262DA1E71B005E2CF0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BA2F8C002DA1B78B005E2CF0 /* Frameworks */ = {
+		BA2F8C362DA1E71E005E2CF0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BA2F8C0A2DA1B78B005E2CF0 /* Frameworks */ = {
+		BA2F8C402DA1E71E005E2CF0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -72,59 +71,58 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		BA2F8BE92DA1B788005E2CF0 = {
+		BA2F8C202DA1E71B005E2CF0 = {
 			isa = PBXGroup;
 			children = (
-				BA2F8BF42DA1B788005E2CF0 /* NeuroFlex */,
-				BA2F8C062DA1B78B005E2CF0 /* NeuroFlexTests */,
-				BA2F8C102DA1B78B005E2CF0 /* NeuroFlexUITests */,
-				BA2F8BF32DA1B788005E2CF0 /* Products */,
+				BA2F8C2B2DA1E71B005E2CF0 /* NeuroFlex */,
+				BA2F8C3C2DA1E71E005E2CF0 /* NeuroFlexTests */,
+				BA2F8C462DA1E71E005E2CF0 /* NeuroFlexUITests */,
+				BA2F8C2A2DA1E71B005E2CF0 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		BA2F8BF32DA1B788005E2CF0 /* Products */ = {
+		BA2F8C2A2DA1E71B005E2CF0 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BA2F8BF22DA1B788005E2CF0 /* NeuroFlex.app */,
-				BA2F8C032DA1B78B005E2CF0 /* NeuroFlexTests.xctest */,
-				BA2F8C0D2DA1B78B005E2CF0 /* NeuroFlexUITests.xctest */,
+				BA2F8C292DA1E71B005E2CF0 /* NeuroFlex.app */,
+				BA2F8C392DA1E71E005E2CF0 /* NeuroFlexTests.xctest */,
+				BA2F8C432DA1E71E005E2CF0 /* NeuroFlexUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		BA2F8BF42DA1B788005E2CF0 /* NeuroFlex */ = {
+		BA2F8C2B2DA1E71B005E2CF0 /* NeuroFlex */ = {
 			isa = PBXGroup;
 			children = (
-				BA2F8BF52DA1B788005E2CF0 /* NeuroFlexApp.swift */,
-				BA2F8BF72DA1B788005E2CF0 /* ContentView.swift */,
-				BA2F8BF92DA1B78B005E2CF0 /* Assets.xcassets */,
-				BA2F8BFE2DA1B78B005E2CF0 /* NeuroFlex.entitlements */,
-				BA2F8BFB2DA1B78B005E2CF0 /* Preview Content */,
+				BA2F8C2C2DA1E71B005E2CF0 /* NeuroFlexApp.swift */,
+				BA2F8C2E2DA1E71B005E2CF0 /* ContentView.swift */,
+				BA2F8C302DA1E71D005E2CF0 /* Assets.xcassets */,
+				BA2F8C322DA1E71D005E2CF0 /* Preview Content */,
 			);
 			path = NeuroFlex;
 			sourceTree = "<group>";
 		};
-		BA2F8BFB2DA1B78B005E2CF0 /* Preview Content */ = {
+		BA2F8C322DA1E71D005E2CF0 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				BA2F8BFC2DA1B78B005E2CF0 /* Preview Assets.xcassets */,
+				BA2F8C332DA1E71D005E2CF0 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		BA2F8C062DA1B78B005E2CF0 /* NeuroFlexTests */ = {
+		BA2F8C3C2DA1E71E005E2CF0 /* NeuroFlexTests */ = {
 			isa = PBXGroup;
 			children = (
-				BA2F8C072DA1B78B005E2CF0 /* NeuroFlexTests.swift */,
+				BA2F8C3D2DA1E71E005E2CF0 /* NeuroFlexTests.swift */,
 			);
 			path = NeuroFlexTests;
 			sourceTree = "<group>";
 		};
-		BA2F8C102DA1B78B005E2CF0 /* NeuroFlexUITests */ = {
+		BA2F8C462DA1E71E005E2CF0 /* NeuroFlexUITests */ = {
 			isa = PBXGroup;
 			children = (
-				BA2F8C112DA1B78B005E2CF0 /* NeuroFlexUITests.swift */,
-				BA2F8C132DA1B78B005E2CF0 /* NeuroFlexUITestsLaunchTests.swift */,
+				BA2F8C472DA1E71E005E2CF0 /* NeuroFlexUITests.swift */,
+				BA2F8C492DA1E71E005E2CF0 /* NeuroFlexUITestsLaunchTests.swift */,
 			);
 			path = NeuroFlexUITests;
 			sourceTree = "<group>";
@@ -132,13 +130,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		BA2F8BF12DA1B788005E2CF0 /* NeuroFlex */ = {
+		BA2F8C282DA1E71B005E2CF0 /* NeuroFlex */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BA2F8C172DA1B78B005E2CF0 /* Build configuration list for PBXNativeTarget "NeuroFlex" */;
+			buildConfigurationList = BA2F8C4D2DA1E71E005E2CF0 /* Build configuration list for PBXNativeTarget "NeuroFlex" */;
 			buildPhases = (
-				BA2F8BEE2DA1B788005E2CF0 /* Sources */,
-				BA2F8BEF2DA1B788005E2CF0 /* Frameworks */,
-				BA2F8BF02DA1B788005E2CF0 /* Resources */,
+				BA2F8C252DA1E71B005E2CF0 /* Sources */,
+				BA2F8C262DA1E71B005E2CF0 /* Frameworks */,
+				BA2F8C272DA1E71B005E2CF0 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -146,69 +144,69 @@
 			);
 			name = NeuroFlex;
 			productName = NeuroFlex;
-			productReference = BA2F8BF22DA1B788005E2CF0 /* NeuroFlex.app */;
+			productReference = BA2F8C292DA1E71B005E2CF0 /* NeuroFlex.app */;
 			productType = "com.apple.product-type.application";
 		};
-		BA2F8C022DA1B78B005E2CF0 /* NeuroFlexTests */ = {
+		BA2F8C382DA1E71E005E2CF0 /* NeuroFlexTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BA2F8C1A2DA1B78B005E2CF0 /* Build configuration list for PBXNativeTarget "NeuroFlexTests" */;
+			buildConfigurationList = BA2F8C502DA1E71E005E2CF0 /* Build configuration list for PBXNativeTarget "NeuroFlexTests" */;
 			buildPhases = (
-				BA2F8BFF2DA1B78B005E2CF0 /* Sources */,
-				BA2F8C002DA1B78B005E2CF0 /* Frameworks */,
-				BA2F8C012DA1B78B005E2CF0 /* Resources */,
+				BA2F8C352DA1E71E005E2CF0 /* Sources */,
+				BA2F8C362DA1E71E005E2CF0 /* Frameworks */,
+				BA2F8C372DA1E71E005E2CF0 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				BA2F8C052DA1B78B005E2CF0 /* PBXTargetDependency */,
+				BA2F8C3B2DA1E71E005E2CF0 /* PBXTargetDependency */,
 			);
 			name = NeuroFlexTests;
 			productName = NeuroFlexTests;
-			productReference = BA2F8C032DA1B78B005E2CF0 /* NeuroFlexTests.xctest */;
+			productReference = BA2F8C392DA1E71E005E2CF0 /* NeuroFlexTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		BA2F8C0C2DA1B78B005E2CF0 /* NeuroFlexUITests */ = {
+		BA2F8C422DA1E71E005E2CF0 /* NeuroFlexUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BA2F8C1D2DA1B78B005E2CF0 /* Build configuration list for PBXNativeTarget "NeuroFlexUITests" */;
+			buildConfigurationList = BA2F8C532DA1E71E005E2CF0 /* Build configuration list for PBXNativeTarget "NeuroFlexUITests" */;
 			buildPhases = (
-				BA2F8C092DA1B78B005E2CF0 /* Sources */,
-				BA2F8C0A2DA1B78B005E2CF0 /* Frameworks */,
-				BA2F8C0B2DA1B78B005E2CF0 /* Resources */,
+				BA2F8C3F2DA1E71E005E2CF0 /* Sources */,
+				BA2F8C402DA1E71E005E2CF0 /* Frameworks */,
+				BA2F8C412DA1E71E005E2CF0 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				BA2F8C0F2DA1B78B005E2CF0 /* PBXTargetDependency */,
+				BA2F8C452DA1E71E005E2CF0 /* PBXTargetDependency */,
 			);
 			name = NeuroFlexUITests;
 			productName = NeuroFlexUITests;
-			productReference = BA2F8C0D2DA1B78B005E2CF0 /* NeuroFlexUITests.xctest */;
+			productReference = BA2F8C432DA1E71E005E2CF0 /* NeuroFlexUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		BA2F8BEA2DA1B788005E2CF0 /* Project object */ = {
+		BA2F8C212DA1E71B005E2CF0 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1520;
 				LastUpgradeCheck = 1520;
 				TargetAttributes = {
-					BA2F8BF12DA1B788005E2CF0 = {
+					BA2F8C282DA1E71B005E2CF0 = {
 						CreatedOnToolsVersion = 15.2;
 					};
-					BA2F8C022DA1B78B005E2CF0 = {
+					BA2F8C382DA1E71E005E2CF0 = {
 						CreatedOnToolsVersion = 15.2;
-						TestTargetID = BA2F8BF12DA1B788005E2CF0;
+						TestTargetID = BA2F8C282DA1E71B005E2CF0;
 					};
-					BA2F8C0C2DA1B78B005E2CF0 = {
+					BA2F8C422DA1E71E005E2CF0 = {
 						CreatedOnToolsVersion = 15.2;
-						TestTargetID = BA2F8BF12DA1B788005E2CF0;
+						TestTargetID = BA2F8C282DA1E71B005E2CF0;
 					};
 				};
 			};
-			buildConfigurationList = BA2F8BED2DA1B788005E2CF0 /* Build configuration list for PBXProject "NeuroFlex" */;
+			buildConfigurationList = BA2F8C242DA1E71B005E2CF0 /* Build configuration list for PBXProject "NeuroFlex" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -216,36 +214,36 @@
 				en,
 				Base,
 			);
-			mainGroup = BA2F8BE92DA1B788005E2CF0;
-			productRefGroup = BA2F8BF32DA1B788005E2CF0 /* Products */;
+			mainGroup = BA2F8C202DA1E71B005E2CF0;
+			productRefGroup = BA2F8C2A2DA1E71B005E2CF0 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				BA2F8BF12DA1B788005E2CF0 /* NeuroFlex */,
-				BA2F8C022DA1B78B005E2CF0 /* NeuroFlexTests */,
-				BA2F8C0C2DA1B78B005E2CF0 /* NeuroFlexUITests */,
+				BA2F8C282DA1E71B005E2CF0 /* NeuroFlex */,
+				BA2F8C382DA1E71E005E2CF0 /* NeuroFlexTests */,
+				BA2F8C422DA1E71E005E2CF0 /* NeuroFlexUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		BA2F8BF02DA1B788005E2CF0 /* Resources */ = {
+		BA2F8C272DA1E71B005E2CF0 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BA2F8BFD2DA1B78B005E2CF0 /* Preview Assets.xcassets in Resources */,
-				BA2F8BFA2DA1B78B005E2CF0 /* Assets.xcassets in Resources */,
+				BA2F8C342DA1E71D005E2CF0 /* Preview Assets.xcassets in Resources */,
+				BA2F8C312DA1E71D005E2CF0 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BA2F8C012DA1B78B005E2CF0 /* Resources */ = {
+		BA2F8C372DA1E71E005E2CF0 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BA2F8C0B2DA1B78B005E2CF0 /* Resources */ = {
+		BA2F8C412DA1E71E005E2CF0 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -255,49 +253,49 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		BA2F8BEE2DA1B788005E2CF0 /* Sources */ = {
+		BA2F8C252DA1E71B005E2CF0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BA2F8BF82DA1B788005E2CF0 /* ContentView.swift in Sources */,
-				BA2F8BF62DA1B788005E2CF0 /* NeuroFlexApp.swift in Sources */,
+				BA2F8C2F2DA1E71B005E2CF0 /* ContentView.swift in Sources */,
+				BA2F8C2D2DA1E71B005E2CF0 /* NeuroFlexApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BA2F8BFF2DA1B78B005E2CF0 /* Sources */ = {
+		BA2F8C352DA1E71E005E2CF0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BA2F8C082DA1B78B005E2CF0 /* NeuroFlexTests.swift in Sources */,
+				BA2F8C3E2DA1E71E005E2CF0 /* NeuroFlexTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BA2F8C092DA1B78B005E2CF0 /* Sources */ = {
+		BA2F8C3F2DA1E71E005E2CF0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BA2F8C122DA1B78B005E2CF0 /* NeuroFlexUITests.swift in Sources */,
-				BA2F8C142DA1B78B005E2CF0 /* NeuroFlexUITestsLaunchTests.swift in Sources */,
+				BA2F8C482DA1E71E005E2CF0 /* NeuroFlexUITests.swift in Sources */,
+				BA2F8C4A2DA1E71E005E2CF0 /* NeuroFlexUITestsLaunchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		BA2F8C052DA1B78B005E2CF0 /* PBXTargetDependency */ = {
+		BA2F8C3B2DA1E71E005E2CF0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = BA2F8BF12DA1B788005E2CF0 /* NeuroFlex */;
-			targetProxy = BA2F8C042DA1B78B005E2CF0 /* PBXContainerItemProxy */;
+			target = BA2F8C282DA1E71B005E2CF0 /* NeuroFlex */;
+			targetProxy = BA2F8C3A2DA1E71E005E2CF0 /* PBXContainerItemProxy */;
 		};
-		BA2F8C0F2DA1B78B005E2CF0 /* PBXTargetDependency */ = {
+		BA2F8C452DA1E71E005E2CF0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = BA2F8BF12DA1B788005E2CF0 /* NeuroFlex */;
-			targetProxy = BA2F8C0E2DA1B78B005E2CF0 /* PBXContainerItemProxy */;
+			target = BA2F8C282DA1E71B005E2CF0 /* NeuroFlex */;
+			targetProxy = BA2F8C442DA1E71E005E2CF0 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		BA2F8C152DA1B78B005E2CF0 /* Debug */ = {
+		BA2F8C4B2DA1E71E005E2CF0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -349,18 +347,18 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 14.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = macosx;
+				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
-		BA2F8C162DA1B78B005E2CF0 /* Release */ = {
+		BA2F8C4C2DA1E71E005E2CF0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -406,70 +404,75 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 14.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				SDKROOT = macosx;
+				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
-		BA2F8C182DA1B78B005E2CF0 /* Debug */ = {
+		BA2F8C4E2DA1E71E005E2CF0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = NeuroFlex/NeuroFlex.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"NeuroFlex/Preview Content\"";
 				DEVELOPMENT_TEAM = HCNM3TKD4K;
-				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
-					"@executable_path/../Frameworks",
+					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = henry.NeuroFlex;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		BA2F8C192DA1B78B005E2CF0 /* Release */ = {
+		BA2F8C4F2DA1E71E005E2CF0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = NeuroFlex/NeuroFlex.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"NeuroFlex/Preview Content\"";
 				DEVELOPMENT_TEAM = HCNM3TKD4K;
-				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
-					"@executable_path/../Frameworks",
+					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = henry.NeuroFlex;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
-		BA2F8C1B2DA1B78B005E2CF0 /* Debug */ = {
+		BA2F8C512DA1E71E005E2CF0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
@@ -478,17 +481,18 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = HCNM3TKD4K;
 				GENERATE_INFOPLIST_FILE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = henry.NeuroFlexTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NeuroFlex.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/NeuroFlex";
 			};
 			name = Debug;
 		};
-		BA2F8C1C2DA1B78B005E2CF0 /* Release */ = {
+		BA2F8C522DA1E71E005E2CF0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
@@ -497,17 +501,18 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = HCNM3TKD4K;
 				GENERATE_INFOPLIST_FILE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = henry.NeuroFlexTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NeuroFlex.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/NeuroFlex";
 			};
 			name = Release;
 		};
-		BA2F8C1E2DA1B78B005E2CF0 /* Debug */ = {
+		BA2F8C542DA1E71E005E2CF0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
@@ -520,11 +525,12 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = NeuroFlex;
 			};
 			name = Debug;
 		};
-		BA2F8C1F2DA1B78B005E2CF0 /* Release */ = {
+		BA2F8C552DA1E71E005E2CF0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
@@ -537,6 +543,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = NeuroFlex;
 			};
 			name = Release;
@@ -544,43 +551,43 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		BA2F8BED2DA1B788005E2CF0 /* Build configuration list for PBXProject "NeuroFlex" */ = {
+		BA2F8C242DA1E71B005E2CF0 /* Build configuration list for PBXProject "NeuroFlex" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				BA2F8C152DA1B78B005E2CF0 /* Debug */,
-				BA2F8C162DA1B78B005E2CF0 /* Release */,
+				BA2F8C4B2DA1E71E005E2CF0 /* Debug */,
+				BA2F8C4C2DA1E71E005E2CF0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BA2F8C172DA1B78B005E2CF0 /* Build configuration list for PBXNativeTarget "NeuroFlex" */ = {
+		BA2F8C4D2DA1E71E005E2CF0 /* Build configuration list for PBXNativeTarget "NeuroFlex" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				BA2F8C182DA1B78B005E2CF0 /* Debug */,
-				BA2F8C192DA1B78B005E2CF0 /* Release */,
+				BA2F8C4E2DA1E71E005E2CF0 /* Debug */,
+				BA2F8C4F2DA1E71E005E2CF0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BA2F8C1A2DA1B78B005E2CF0 /* Build configuration list for PBXNativeTarget "NeuroFlexTests" */ = {
+		BA2F8C502DA1E71E005E2CF0 /* Build configuration list for PBXNativeTarget "NeuroFlexTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				BA2F8C1B2DA1B78B005E2CF0 /* Debug */,
-				BA2F8C1C2DA1B78B005E2CF0 /* Release */,
+				BA2F8C512DA1E71E005E2CF0 /* Debug */,
+				BA2F8C522DA1E71E005E2CF0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BA2F8C1D2DA1B78B005E2CF0 /* Build configuration list for PBXNativeTarget "NeuroFlexUITests" */ = {
+		BA2F8C532DA1E71E005E2CF0 /* Build configuration list for PBXNativeTarget "NeuroFlexUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				BA2F8C1E2DA1B78B005E2CF0 /* Debug */,
-				BA2F8C1F2DA1B78B005E2CF0 /* Release */,
+				BA2F8C542DA1E71E005E2CF0 /* Debug */,
+				BA2F8C552DA1E71E005E2CF0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = BA2F8BEA2DA1B788005E2CF0 /* Project object */;
+	rootObject = BA2F8C212DA1E71B005E2CF0 /* Project object */;
 }
