@@ -4,6 +4,7 @@
 *.xcworkspace/
 *.xcodeproj/project.xcworkspace/
 *.xcodeproj/xcuserdata/
+*.xcuserstate
 
 # Derived data
 DerivedData/
