@@ -186,9 +186,9 @@ struct CustomTabBar: View {
                     .frame(width: geometry.size.width * 0.9)
                     Spacer()
                 }
-                .padding(.top, 16)
+                .padding(.top, 24)
             }
-            .frame(height: 80)  // Increased overall container height
+            .frame(height: 80)
         }
         .background(Color(red: 1.0, green: 1.0, blue: 0.992))
         .edgesIgnoringSafeArea(.bottom)
