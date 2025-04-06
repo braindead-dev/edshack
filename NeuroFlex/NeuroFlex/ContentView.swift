@@ -35,7 +35,7 @@ struct WelcomeView: View {
                 .frame(width: 280, height: 280)
             
             // Today's Progress section
-            VStack(alignment: .leading, spacing: 20) {
+            VStack(alignment: .leading, spacing: 12) {
                 Text("Today's Progress")
                     .font(.system(size: 22, weight: .bold))
                     .foregroundColor(Color(red: 0.18, green: 0.21, blue: 0.33))
@@ -127,6 +127,8 @@ struct SessionView: View {
             Text("Session")
                 .font(.title)
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color(red: 0.988, green: 0.976, blue: 0.961).ignoresSafeArea())  // #FCF9F5
     }
 }
 
@@ -136,6 +138,8 @@ struct HistoryView: View {
             Text("History")
                 .font(.title)
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color(red: 0.988, green: 0.976, blue: 0.961).ignoresSafeArea())  // #FCF9F5
     }
 }
 
@@ -145,6 +149,8 @@ struct SettingsView: View {
             Text("Settings")
                 .font(.title)
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color(red: 0.988, green: 0.976, blue: 0.961).ignoresSafeArea())  // #FCF9F5
     }
 }
 
