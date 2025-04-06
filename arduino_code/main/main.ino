@@ -6,8 +6,8 @@ LiquidCrystal lcd(8, 9, 10, 11, 12, 13);
 int potPin = A0;
 int potValue = 0;
 int angle = 0;
-int buzzerPin = 1;
-int redLed = 2;
+int buzzerPin = 0;
+int redLed = 1;
 
 void setup() {
   lcd.begin(16, 2); // Set up LCD 16x2
@@ -45,7 +45,7 @@ void loop() {
   else {
     lcd.setCursor(0, 1);
     lcd.print("Hyperextending  ");
-    tone(buzzerPin, 500, 1);
+    tone(buzzerPin, 2000, 20);
     digitalWrite(redLed, HIGH);
     delay(10);
     digitalWrite(redLed, LOW);
