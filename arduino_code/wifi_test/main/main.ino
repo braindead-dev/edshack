@@ -1,17 +1,13 @@
 #include <WiFiS3.h>
 #include <LiquidCrystal.h>
-#include <WiFiClient.h>
-#include <ArduinoHttpClient.h>
 #include <ArduinoJson.h>
 
-// WiFi credentials
-const char* ssid     = "iPhoneIvan";
-const char* password = "Ivan1234";
+// WiFi configuration for SoftAP mode
+const char* ssid = "NeuroFlex";
+const char* password = "12345678";
 
-// Firebase configuration
-const char* firebaseHost = "firestore.googleapis.com";
-const int firebasePort = 443;
-const char* projectId = "neuroflex-7d2a6";
+// Web server
+WiFiServer server(80);
 
 // LCD pins: RS, E, D4, D5, D6, D7
 LiquidCrystal lcd(8, 9, 10, 11, 12, 13);
@@ -21,20 +17,18 @@ int potPin = A0;
 int buzzerPin = 0;
 int redLed = 1;
 
-// HTTP client components
-WiFiClient wifi;
-HttpClient client = HttpClient(wifi, firebaseHost, firebasePort);
-
-// User data
-const char* userName = "henry";
-String userId = "";
-
 // Variables for angle monitoring
 int potValue = 0;
 int angle = 0;
-bool isFirebaseConnected = false;
+bool clientConnected = false;
 
 void setup() {
+  // Initialize Serial
+  Serial.begin(9600);
+  while (!Serial) {
+    ; // Wait for serial port to connect
+  }
+  
   // Initialize LCD
   lcd.begin(16, 2);
   lcd.print("NeuroFlex Ready");
@@ -44,23 +38,28 @@ void setup() {
   pinMode(buzzerPin, OUTPUT);
   pinMode(redLed, OUTPUT);
   
-  // Connect to WiFi
-  connectToWiFi();
+  // Start SoftAP mode
+  setupSoftAP();
   
-  // Create user in Firebase if WiFi is connected
-  if (isFirebaseConnected) {
-    createUser();
-  }
+  // Start web server
+  server.begin();
+  lcd.clear();
+  lcd.print("Server Running");
+  lcd.setCursor(0, 1);
+  lcd.print(WiFi.localIP());
+  delay(2000);
 }
 
-void connectToWiFi() {
+void setupSoftAP() {
   lcd.clear();
-  lcd.print("Connecting WiFi...");
+  lcd.print("Setting up AP...");
   
-  WiFi.begin(ssid, password);
+  // Configure SoftAP
+  WiFi.beginAP(ssid, password);
+  
+  // Wait for AP to start
   int tries = 0;
-  
-  while (WiFi.status() != WL_CONNECTED) {
+  while (WiFi.status() != WL_AP_LISTENING) {
     delay(500);
     lcd.setCursor(0, 1);
     lcd.print("Try: ");
@@ -68,61 +67,16 @@ void connectToWiFi() {
     
     if (tries > 20) {
       lcd.clear();
-      lcd.print("WiFi Failed");
-      isFirebaseConnected = false;
-      delay(2000);
-      return;
+      lcd.print("AP Failed");
+      while (true); // Halt
     }
   }
   
   lcd.clear();
-  lcd.print("WiFi Connected!");
+  lcd.print("AP Running!");
   lcd.setCursor(0, 1);
   lcd.print(WiFi.localIP());
-  isFirebaseConnected = true;
   delay(2000);
-}
-
-void createUser() {
-  lcd.clear();
-  lcd.print("Creating User...");
-  
-  // Generate a unique user ID
-  userId = String(random(1000000));
-  
-  // Create JSON document for user data
-  StaticJsonDocument<200> doc;
-  doc["fields"]["name"]["stringValue"] = userName;
-  doc["fields"]["uuid"]["stringValue"] = userId;
-  doc["fields"]["currentAngle"]["integerValue"] = 0;
-  doc["fields"]["hyperextensionRange"]["integerValue"] = 0;
-  
-  String jsonString;
-  serializeJson(doc, jsonString);
-  
-  // Send POST request to Firestore
-  String path = "/v1/projects/" + String(projectId) + "/databases/(default)/documents/users/" + userId;
-  
-  client.beginRequest();
-  client.post(path);
-  client.sendHeader("Content-Type", "application/json");
-  client.sendHeader("Content-Length", jsonString.length());
-  client.beginBody();
-  client.print(jsonString);
-  
-  int statusCode = client.responseStatusCode();
-  
-  lcd.clear();
-  if (statusCode == 200) {
-    lcd.print("User Created!");
-    lcd.setCursor(0, 1);
-    lcd.print("ID: " + userId);
-  } else {
-    lcd.print("Failed: ");
-    lcd.print(statusCode);
-  }
-  
-  delay(3000);
 }
 
 void loop() {
@@ -160,29 +114,39 @@ void loop() {
     delay(10);
   }
   
-  // If Firebase is connected, update the angle in the database
-  if (isFirebaseConnected) {
-    updateAngleInFirebase();
+  // Check for client connections
+  WiFiClient client = server.available();
+  if (client) {
+    clientConnected = true;
+    handleClient(client);
   }
   
   delay(100);
 }
 
-void updateAngleInFirebase() {
-  // Create JSON document for angle update
-  StaticJsonDocument<100> doc;
-  doc["fields"]["currentAngle"]["integerValue"] = angle;
-  
-  String jsonString;
-  serializeJson(doc, jsonString);
-  
-  // Send PATCH request to Firestore
-  String path = "/v1/projects/" + String(projectId) + "/databases/(default)/documents/users/" + userId;
-  
-  client.beginRequest();
-  client.patch(path);
-  client.sendHeader("Content-Type", "application/json");
-  client.sendHeader("Content-Length", jsonString.length());
-  client.beginBody();
-  client.print(jsonString);
+void handleClient(WiFiClient client) {
+  // Wait for client to send request
+  if (client.connected()) {
+    // Read the first line of the request
+    String req = client.readStringUntil('\r');
+    Serial.println(req);
+    
+    // Send HTTP response
+    client.println("HTTP/1.1 200 OK");
+    client.println("Content-Type: application/json");
+    client.println("Access-Control-Allow-Origin: *");
+    client.println("Connection: close");
+    client.println();
+    
+    // Create JSON response with angle data
+    StaticJsonDocument<200> doc;
+    doc["angle"] = angle;
+    
+    // Send JSON response
+    serializeJson(doc, client);
+    
+    // Close the connection
+    client.stop();
+    clientConnected = false;
+  }
 }

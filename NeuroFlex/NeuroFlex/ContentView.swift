@@ -111,13 +111,167 @@ struct WelcomeView: View {
 }
 
 struct HomeView: View {
+    @State private var angle: Int = 0
+    @State private var isConnected: Bool = false
+    @State private var connectionStatus: String = "Not Connected"
+    @State private var timer: Timer? = nil
+    
     var body: some View {
-        VStack {
-            Text("Home")
-                .font(.title)
+        VStack(spacing: 20) {
+            // Connection status
+            HStack {
+                Circle()
+                    .fill(isConnected ? Color.green : Color.red)
+                    .frame(width: 12, height: 12)
+                Text(connectionStatus)
+                    .font(.system(size: 16))
+                    .foregroundColor(Color(red: 0.18, green: 0.21, blue: 0.33))
+            }
+            .padding(.top, 20)
+            
+            // Angle display
+            VStack(spacing: 10) {
+                Text("Current Angle")
+                    .font(.system(size: 24, weight: .bold))
+                    .foregroundColor(Color(red: 0.18, green: 0.21, blue: 0.33))
+                
+                Text("\(angle)°")
+                    .font(.system(size: 72, weight: .bold))
+                    .foregroundColor(angleColor)
+                
+                // Status indicator
+                Text(angleStatus)
+                    .font(.system(size: 20))
+                    .foregroundColor(angleColor)
+                    .padding(.top, 5)
+            }
+            .padding(.vertical, 30)
+            .frame(maxWidth: .infinity)
+            .background(
+                RoundedRectangle(cornerRadius: 16)
+                    .fill(Color.white.opacity(0.5))
+            )
+            .overlay(
+                RoundedRectangle(cornerRadius: 16)
+                    .stroke(Color.gray.opacity(0.2), lineWidth: 1)
+            )
+            .padding(.horizontal)
+            
+            // Connect button
+            Button(action: {
+                if isConnected {
+                    stopPolling()
+                } else {
+                    startPolling()
+                }
+            }) {
+                Text(isConnected ? "Disconnect" : "Connect")
+                    .font(.system(size: 18, weight: .bold))
+                    .foregroundColor(.white)
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .background(
+                        RoundedRectangle(cornerRadius: 16)
+                            .fill(isConnected ? Color.red : Color(red: 0.239, green: 0.482, blue: 0.945))
+                    )
+            }
+            .padding(.horizontal)
+            
+            Spacer()
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color(red: 0.988, green: 0.976, blue: 0.961).ignoresSafeArea())  // #FCF9F5
+        .background(Color(red: 0.988, green: 0.976, blue: 0.961).ignoresSafeArea())
+        .onAppear {
+            // Check if already connected to NeuroFlex network
+            checkConnection()
+        }
+    }
+    
+    // Angle status based on value
+    var angleStatus: String {
+        if angle < 170 {
+            return "Safe"
+        } else if angle >= 170 && angle <= 180 {
+            return "Caution"
+        } else {
+            return "Hyperextending"
+        }
+    }
+    
+    // Color based on angle
+    var angleColor: Color {
+        if angle < 170 {
+            return Color(red: 0.4, green: 0.8, blue: 0.4) // Green
+        } else if angle >= 170 && angle <= 180 {
+            return Color.orange
+        } else {
+            return Color(red: 1, green: 0.4, blue: 0.4) // Red
+        }
+    }
+    
+    // Check if connected to NeuroFlex network
+    func checkConnection() {
+        // In a real app, you would check the current WiFi SSID
+        // For now, we'll just assume we're connected for demo purposes
+        isConnected = true
+        connectionStatus = "Connected to NeuroFlex"
+        startPolling()
+    }
+    
+    // Start polling for angle data
+    func startPolling() {
+        isConnected = true
+        connectionStatus = "Connected to NeuroFlex"
+        
+        // Create a timer to poll every 500ms
+        timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { _ in
+            fetchAngleData()
+        }
+    }
+    
+    // Stop polling
+    func stopPolling() {
+        timer?.invalidate()
+        timer = nil
+        isConnected = false
+        connectionStatus = "Not Connected"
+    }
+    
+    // Fetch angle data from Arduino
+    func fetchAngleData() {
+        // In a real app, you would make an HTTP request to the Arduino
+        // For now, we'll simulate the data for demo purposes
+        // The Arduino would be at 192.168.4.1
+        
+        // Simulate angle changes for demo
+        let randomChange = Int.random(in: -5...5)
+        angle = max(0, min(230, angle + randomChange))
+        
+        // In a real implementation, you would use URLSession to fetch data:
+        /*
+        guard let url = URL(string: "http://192.168.4.1") else { return }
+        
+        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+            if let error = error {
+                print("Error: \(error.localizedDescription)")
+                return
+            }
+            
+            guard let data = data else { return }
+            
+            do {
+                if let json = try JSONSerialization.jsonObject(with: data) as? [String: Any],
+                   let angleValue = json["angle"] as? Int {
+                    DispatchQueue.main.async {
+                        self.angle = angleValue
+                    }
+                }
+            } catch {
+                print("JSON parsing error: \(error.localizedDescription)")
+            }
+        }
+        task.resume()
+        */
     }
 }
 
