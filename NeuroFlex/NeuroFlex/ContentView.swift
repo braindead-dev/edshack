@@ -7,7 +7,9 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct WelcomeView: View {
+    @Binding var isWelcomeScreenShown: Bool
+    
     var body: some View {
         VStack(spacing: 20) {
             Spacer()
@@ -85,7 +87,7 @@ struct ContentView: View {
             
             // Get Started button
             Button(action: {
-                // Nothing happens for now
+                isWelcomeScreenShown = false
             }) {
                 Text("Get Started")
                     .font(.system(size: 24, weight: .bold))
@@ -100,11 +102,112 @@ struct ContentView: View {
             .padding(.horizontal)
             
             Spacer()
-                .frame(height: 20)  // Reduced from 40 to bring button higher
+                .frame(height: 20)
         }
         .padding(.vertical)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color(red: 0.976, green: 0.949, blue: 0.929).ignoresSafeArea())
+    }
+}
+
+struct HomeView: View {
+    var body: some View {
+        VStack {
+            Text("Home")
+                .font(.title)
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color(red: 0.988, green: 0.976, blue: 0.961).ignoresSafeArea())  // #FCF9F5
+    }
+}
+
+struct SessionView: View {
+    var body: some View {
+        VStack {
+            Text("Session")
+                .font(.title)
+        }
+    }
+}
+
+struct HistoryView: View {
+    var body: some View {
+        VStack {
+            Text("History")
+                .font(.title)
+        }
+    }
+}
+
+struct SettingsView: View {
+    var body: some View {
+        VStack {
+            Text("Settings")
+                .font(.title)
+        }
+    }
+}
+
+struct MainTabView: View {
+    @State private var selectedTab = 0
+    
+    var body: some View {
+        TabView(selection: $selectedTab) {
+            HomeView()
+                .tabItem {
+                    VStack {
+                        Image(systemName: "house.fill")
+                        Text("Home")
+                    }
+                }
+                .tag(0)
+            
+            SessionView()
+                .tabItem {
+                    VStack {
+                        Image(systemName: "circle")
+                        Text("Session")
+                    }
+                }
+                .tag(1)
+            
+            HistoryView()
+                .tabItem {
+                    VStack {
+                        Image(systemName: "clock")
+                        Text("History")
+                    }
+                }
+                .tag(2)
+            
+            SettingsView()
+                .tabItem {
+                    VStack {
+                        Image(systemName: "gearshape.fill")
+                        Text("Settings")
+                    }
+                }
+                .tag(3)
+        }
+        .tint(Color(red: 0.216, green: 0.227, blue: 0.373))  // #373A5F - Selected color
+        .onAppear {
+            // Set unselected tab color
+            UITabBar.appearance().unselectedItemTintColor = UIColor(red: 0.706, green: 0.722, blue: 0.733, alpha: 1.0)  // #B4B8BB
+            // Set tab bar background color
+            UITabBar.appearance().backgroundColor = UIColor(red: 1.0, green: 1.0, blue: 0.992, alpha: 1.0)  // #FFFFFD
+        }
+    }
+}
+
+struct ContentView: View {
+    @State private var isWelcomeScreenShown = true
+    
+    var body: some View {
+        if isWelcomeScreenShown {
+            WelcomeView(isWelcomeScreenShown: $isWelcomeScreenShown)
+        } else {
+            MainTabView()
+        }
     }
 }
 
