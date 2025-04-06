@@ -113,11 +113,22 @@ struct WelcomeView: View {
 struct HomeView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            Text("NeuroFlex")
-                .font(.system(size: 32, weight: .bold))
-                .foregroundColor(Color(red: 0.18, green: 0.21, blue: 0.33))
-                .padding(.leading, 18)
-                .padding(.top, 8)
+            HStack {
+                Text("NeuroFlex")
+                    .font(.system(size: 32, weight: .bold))
+                    .foregroundColor(Color(red: 0.18, green: 0.21, blue: 0.33))
+                
+                Spacer()
+                
+                Image("avatar")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 32, height: 32)
+                    .clipShape(Circle())
+                    .padding(.trailing, 20)
+            }
+            .padding(.leading, 20)
+            .padding(.top, 8)
             
             Spacer()
         }
