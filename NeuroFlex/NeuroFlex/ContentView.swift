@@ -172,21 +172,23 @@ struct CustomTabBar: View {
                             }) {
                                 VStack(spacing: 4) {
                                     Image(systemName: item.icon)
+                                        .font(.system(size: 24))
                                     Text(item.title)
-                                        .font(.caption)
+                                        .font(.system(size: 12))
                                 }
                             }
-                            .frame(width: (geometry.size.width * 0.8) / CGFloat(items.count))
+                            .frame(width: (geometry.size.width * 0.9) / CGFloat(items.count))
                             .foregroundColor(selectedTab == item.tag ? 
                                 Color(red: 0.216, green: 0.227, blue: 0.373) : 
                                 Color(red: 0.706, green: 0.722, blue: 0.733))
                         }
                     }
-                    .frame(width: geometry.size.width * 0.8)
+                    .frame(width: geometry.size.width * 0.9)
                     Spacer()
                 }
+                .padding(.top, 16)
             }
-            .frame(height: 49)
+            .frame(height: 80)  // Increased overall container height
         }
         .background(Color(red: 1.0, green: 1.0, blue: 0.992))
         .edgesIgnoringSafeArea(.bottom)
