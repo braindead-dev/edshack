@@ -130,6 +130,39 @@ struct HomeView: View {
             .padding(.leading, 20)
             .padding(.top, 8)
             
+            // Welcome Card
+            VStack(alignment: .leading, spacing: 12) {
+                Text("Welcome back!")
+                    .font(.system(size: 24, weight: .bold))
+                    .foregroundColor(Color(red: 0.18, green: 0.21, blue: 0.33))
+                
+                Text("Let's get started with a session")
+                    .font(.system(size: 16))
+                    .foregroundColor(Color(red: 0.18, green: 0.21, blue: 0.33))
+                
+                Button(action: {
+                    // Start session action
+                }) {
+                    Text("Start Session")
+                        .font(.system(size: 16, weight: .semibold))
+                        .foregroundColor(.white)
+                        .padding(.horizontal, 24)
+                        .padding(.vertical, 12)
+                        .background(
+                            Capsule()
+                                .fill(Color(red: 0.239, green: 0.482, blue: 0.945))
+                        )
+                }
+                .padding(.top, 4)
+            }
+            .padding(20)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .background(Color.white)
+            .cornerRadius(16)
+            .shadow(color: Color.black.opacity(0.05), radius: 10, x: 0, y: 4)
+            .padding(.horizontal, 20)
+            .padding(.top, 20)
+            
             HStack(spacing: 16) {
                 // Live Angle Card
                 VStack(spacing: 12) {
@@ -166,7 +199,7 @@ struct HomeView: View {
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 55, height: 55)
                     
-                    Text("12 mins")
+                    Text("3 mins")
                         .font(.system(size: 24, weight: .bold))
                         .foregroundColor(Color(red: 0.18, green: 0.21, blue: 0.33))
                     
