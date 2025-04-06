@@ -150,7 +150,7 @@ struct HomeView: View {
                         .padding(.vertical, 12)
                         .background(
                             Capsule()
-                                .fill(Color(red: 0.239, green: 0.482, blue: 0.945))
+                                .fill(Color(red: 0.4, green: 0.45, blue: 0.9))
                         )
                 }
                 .padding(.top, 4)
