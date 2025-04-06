@@ -39,7 +39,7 @@ void loop() {
   else if (angle >= 170 && angle <= 180){
     lcd.setCursor(0, 1);
     lcd.print("Caution        ");
-    noTone(buzzerPin);
+    tone(buzzerPin, 1000, 100);
     digitalWrite(greenLed, LOW);
     digitalWrite(redLed, HIGH);
     delay(50);
@@ -49,7 +49,7 @@ void loop() {
   else {
     lcd.setCursor(0, 1);
     lcd.print("Hyperextending  ");
-    tone(buzzerPin, 500, 1);
+    tone(buzzerPin, 2000, 100);
     digitalWrite(greenLed, LOW);
     digitalWrite(redLed, HIGH);
     delay(10);
