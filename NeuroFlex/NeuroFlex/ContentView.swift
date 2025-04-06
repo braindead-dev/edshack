@@ -112,10 +112,16 @@ struct WelcomeView: View {
 
 struct HomeView: View {
     var body: some View {
-        VStack {
-            // Empty HomeView
+        VStack(alignment: .leading, spacing: 0) {
+            Text("NeuroFlex")
+                .font(.system(size: 32, weight: .bold))
+                .foregroundColor(Color(red: 0.18, green: 0.21, blue: 0.33))
+                .padding(.leading, 18)
+                .padding(.top, 8)
+            
+            Spacer()
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
         .background(Color(red: 0.988, green: 0.976, blue: 0.961).ignoresSafeArea())
     }
 }
