@@ -111,6 +111,16 @@ struct WelcomeView: View {
 }
 
 struct HomeView: View {
+    var body: some View {
+        VStack {
+            // Empty HomeView
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color(red: 0.988, green: 0.976, blue: 0.961).ignoresSafeArea())
+    }
+}
+
+struct SessionView: View {
     @State private var angle: Int = 0
     @State private var isConnected: Bool = false
     @State private var connectionStatus: String = "Not Connected"
@@ -193,10 +203,6 @@ struct HomeView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color(red: 0.988, green: 0.976, blue: 0.961).ignoresSafeArea())
-        .onAppear {
-            // Don't automatically connect on appear
-            // Let the user manually connect
-        }
     }
     
     // Calculate latency in milliseconds
@@ -312,17 +318,6 @@ struct HomeView: View {
             }
         }
         task.resume()
-    }
-}
-
-struct SessionView: View {
-    var body: some View {
-        VStack {
-            Text("Session")
-                .font(.title)
-        }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color(red: 0.988, green: 0.976, blue: 0.961).ignoresSafeArea())  // #FCF9F5
     }
 }
 
