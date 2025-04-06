@@ -130,6 +130,59 @@ struct HomeView: View {
             .padding(.leading, 20)
             .padding(.top, 8)
             
+            HStack(spacing: 16) {
+                // Live Angle Card
+                VStack(spacing: 8) {
+                    ZStack {
+                        Circle()
+                            .stroke(Color(red: 0.9, green: 0.92, blue: 0.95), lineWidth: 12)
+                            .frame(width: 80, height: 80)
+                        
+                        Circle()
+                            .trim(from: 0, to: 0.7)
+                            .stroke(Color(red: 0.4, green: 0.45, blue: 0.9), lineWidth: 12)
+                            .frame(width: 80, height: 80)
+                            .rotationEffect(.degrees(-90))
+                        
+                        Text("150°")
+                            .font(.system(size: 24, weight: .bold))
+                            .foregroundColor(Color(red: 0.18, green: 0.21, blue: 0.33))
+                    }
+                    
+                    Text("Live Angle")
+                        .font(.system(size: 16))
+                        .foregroundColor(Color(red: 0.18, green: 0.21, blue: 0.33))
+                }
+                .frame(maxWidth: .infinity)
+                .padding(.vertical, 20)
+                .background(Color.white)
+                .cornerRadius(16)
+                .shadow(color: Color.black.opacity(0.05), radius: 10, x: 0, y: 4)
+                
+                // Safe Time Card
+                VStack(spacing: 8) {
+                    Image("love_bear")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 40, height: 40)
+                    
+                    Text("4h 12m")
+                        .font(.system(size: 24, weight: .bold))
+                        .foregroundColor(Color(red: 0.18, green: 0.21, blue: 0.33))
+                    
+                    Text("Safe Time Today")
+                        .font(.system(size: 16))
+                        .foregroundColor(Color(red: 0.18, green: 0.21, blue: 0.33))
+                }
+                .frame(maxWidth: .infinity)
+                .padding(.vertical, 20)
+                .background(Color.white)
+                .cornerRadius(16)
+                .shadow(color: Color.black.opacity(0.05), radius: 10, x: 0, y: 4)
+            }
+            .padding(.horizontal, 20)
+            .padding(.top, 20)
+            
             Spacer()
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
