@@ -189,13 +189,13 @@ struct CustomTabBar: View {
                 }
                 Spacer()
             }
-            .padding(.top, 24)
+            .padding(.top, 16)
             .frame(height: 80)
             
             // Extra rectangle to ensure we extend all the way down
             Rectangle()
                 .fill(Color(red: 1.0, green: 1.0, blue: 0.992))
-                .frame(height: 50) // Extra height to ensure we go below the home indicator
+                .frame(height: 30)
         }
         .background(Color(red: 1.0, green: 1.0, blue: 0.992))
         .clipShape(RoundedCorner(radius: 24, corners: [.topLeft, .topRight]))
