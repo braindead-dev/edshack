@@ -167,38 +167,38 @@ struct CustomTabBar: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            GeometryReader { geometry in
+            HStack(spacing: 0) {
+                Spacer()
                 HStack(spacing: 0) {
-                    Spacer()
-                    HStack(spacing: 0) {
-                        ForEach(items) { item in
-                            Button(action: {
-                                selectedTab = item.tag
-                            }) {
-                                VStack(spacing: 4) {
-                                    Image(systemName: item.icon)
-                                        .font(.system(size: 24))
-                                    Text(item.title)
-                                        .font(.system(size: 12))
-                                }
+                    ForEach(items) { item in
+                        Button(action: {
+                            selectedTab = item.tag
+                        }) {
+                            VStack(spacing: 4) {
+                                Image(systemName: item.icon)
+                                    .font(.system(size: 24))
+                                Text(item.title)
+                                    .font(.system(size: 12))
                             }
-                            .frame(width: (geometry.size.width * 0.9) / CGFloat(items.count))
-                            .foregroundColor(selectedTab == item.tag ? 
-                                Color(red: 0.216, green: 0.227, blue: 0.373) : 
-                                Color(red: 0.706, green: 0.722, blue: 0.733))
                         }
+                        .frame(width: UIScreen.main.bounds.width * 0.9 / CGFloat(items.count))
+                        .foregroundColor(selectedTab == item.tag ? 
+                            Color(red: 0.216, green: 0.227, blue: 0.373) : 
+                            Color(red: 0.706, green: 0.722, blue: 0.733))
                     }
-                    .frame(width: geometry.size.width * 0.9)
-                    Spacer()
                 }
-                .padding(.top, 24)
+                Spacer()
             }
+            .padding(.top, 24)
             .frame(height: 80)
+            
+            // Extra rectangle to ensure we extend all the way down
+            Rectangle()
+                .fill(Color(red: 1.0, green: 1.0, blue: 0.992))
+                .frame(height: 50) // Extra height to ensure we go below the home indicator
         }
+        .background(Color(red: 1.0, green: 1.0, blue: 0.992))
         .clipShape(RoundedCorner(radius: 24, corners: [.topLeft, .topRight]))
-        .background(
-            Color(red: 1.0, green: 1.0, blue: 0.992)
-        )
         .overlay(
             RoundedCorner(radius: 24, corners: [.topLeft, .topRight])
                 .stroke(Color.gray.opacity(0.2), lineWidth: 1)
@@ -251,7 +251,9 @@ struct MainTabView: View {
             }
             
             CustomTabBar(selectedTab: $selectedTab, items: tabItems)
+                .ignoresSafeArea(.all, edges: .bottom)
         }
+        .ignoresSafeArea(.all, edges: .bottom)
     }
 }
 
