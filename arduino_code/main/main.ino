@@ -1,14 +1,13 @@
 #include <LiquidCrystal.h>
 
 // Order: RS, E, D4, D5, D6, D7
-LiquidCrystal lcd(7, 8, 9, 10, 11, 12);
+LiquidCrystal lcd(8, 9, 10, 11, 12, 13);
 
 int potPin = A0;
 int potValue = 0;
 int angle = 0;
-int buzzerPin = 4;
-int redLed = 6;
-int greenLed = 2;
+int buzzerPin = 1;
+int redLed = 2;
 
 void setup() {
   lcd.begin(16, 2); // Set up LCD 16x2
@@ -17,7 +16,6 @@ void setup() {
   lcd.clear();
   pinMode(buzzerPin, OUTPUT);
   pinMode(redLed, OUTPUT);
-  pinMode(greenLed, OUTPUT);
 }
 
 void loop() {
@@ -34,13 +32,11 @@ void loop() {
     lcd.print("Safe            ");
     noTone(buzzerPin);
     digitalWrite(redLed, LOW);
-    digitalWrite(greenLed, HIGH);
   }
   else if (angle >= 170 && angle <= 180){
     lcd.setCursor(0, 1);
     lcd.print("Caution        ");
-    tone(buzzerPin, 1000, 100);
-    digitalWrite(greenLed, LOW);
+    noTone(buzzerPin);
     digitalWrite(redLed, HIGH);
     delay(50);
     digitalWrite(redLed, LOW);
@@ -49,8 +45,7 @@ void loop() {
   else {
     lcd.setCursor(0, 1);
     lcd.print("Hyperextending  ");
-    tone(buzzerPin, 2000, 100);
-    digitalWrite(greenLed, LOW);
+    tone(buzzerPin, 500, 1);
     digitalWrite(redLed, HIGH);
     delay(10);
     digitalWrite(redLed, LOW);
