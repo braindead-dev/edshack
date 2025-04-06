@@ -22,6 +22,10 @@ int potValue = 0;
 int angle = 0;
 bool clientConnected = false;
 
+// Timing variables
+unsigned long lastAngleUpdate = 0;
+const unsigned long ANGLE_UPDATE_INTERVAL = 50; // Update angle every 50ms
+
 void setup() {
   // Initialize Serial
   Serial.begin(9600);
@@ -80,15 +84,36 @@ void setupSoftAP() {
 }
 
 void loop() {
+  // Update angle at fixed intervals
+  unsigned long currentMillis = millis();
+  if (currentMillis - lastAngleUpdate >= ANGLE_UPDATE_INTERVAL) {
+    lastAngleUpdate = currentMillis;
+    updateAngle();
+  }
+  
+  // Check for client connections
+  WiFiClient client = server.available();
+  if (client) {
+    clientConnected = true;
+    handleClient(client);
+  }
+  
+  // Small delay to prevent overwhelming the system
+  delay(10);
+}
+
+void updateAngle() {
   // Read and process angle
   potValue = analogRead(potPin);
   angle = map(potValue, 0, 1023, 0, 230);
   
+  // Update LCD display
   lcd.setCursor(0, 0);
   lcd.print("Angle: ");
   lcd.print(angle);
   lcd.print(" deg  ");
 
+  // Update feedback based on angle
   if (angle < 170) {
     lcd.setCursor(0, 1);
     lcd.print("Safe            ");
@@ -113,15 +138,6 @@ void loop() {
     digitalWrite(redLed, LOW);
     delay(10);
   }
-  
-  // Check for client connections
-  WiFiClient client = server.available();
-  if (client) {
-    clientConnected = true;
-    handleClient(client);
-  }
-  
-  delay(100);
 }
 
 void handleClient(WiFiClient client) {
@@ -131,7 +147,7 @@ void handleClient(WiFiClient client) {
     String req = client.readStringUntil('\r');
     Serial.println(req);
     
-    // Send HTTP response
+    // Send HTTP response immediately
     client.println("HTTP/1.1 200 OK");
     client.println("Content-Type: application/json");
     client.println("Access-Control-Allow-Origin: *");

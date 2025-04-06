@@ -115,6 +115,11 @@ struct HomeView: View {
     @State private var isConnected: Bool = false
     @State private var connectionStatus: String = "Not Connected"
     @State private var timer: Timer? = nil
+    @State private var lastFetchTime: Date = Date()
+    @State private var isSimulating: Bool = false
+    
+    // Arduino server URL
+    private let arduinoURL = "http://192.168.4.1"
     
     var body: some View {
         VStack(spacing: 20) {
@@ -144,6 +149,14 @@ struct HomeView: View {
                     .font(.system(size: 20))
                     .foregroundColor(angleColor)
                     .padding(.top, 5)
+                
+                // Latency indicator
+                if isConnected {
+                    Text("Latency: \(String(format: "%.0f", latency))ms")
+                        .font(.system(size: 14))
+                        .foregroundColor(.gray)
+                        .padding(.top, 5)
+                }
             }
             .padding(.vertical, 30)
             .frame(maxWidth: .infinity)
@@ -177,14 +190,24 @@ struct HomeView: View {
             }
             .padding(.horizontal)
             
+            // Simulation toggle
+            Toggle("Simulate Data", isOn: $isSimulating)
+                .padding(.horizontal)
+                .padding(.top, 10)
+            
             Spacer()
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color(red: 0.988, green: 0.976, blue: 0.961).ignoresSafeArea())
         .onAppear {
-            // Check if already connected to NeuroFlex network
-            checkConnection()
+            // Don't automatically connect on appear
+            // Let the user manually connect
         }
+    }
+    
+    // Calculate latency in milliseconds
+    var latency: Double {
+        return Date().timeIntervalSince(lastFetchTime) * 1000
     }
     
     // Angle status based on value
@@ -209,24 +232,63 @@ struct HomeView: View {
         }
     }
     
-    // Check if connected to NeuroFlex network
-    func checkConnection() {
-        // In a real app, you would check the current WiFi SSID
-        // For now, we'll just assume we're connected for demo purposes
-        isConnected = true
-        connectionStatus = "Connected to NeuroFlex"
-        startPolling()
-    }
-    
     // Start polling for angle data
     func startPolling() {
-        isConnected = true
-        connectionStatus = "Connected to NeuroFlex"
-        
-        // Create a timer to poll every 500ms
-        timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { _ in
-            fetchAngleData()
+        // First try to connect to the Arduino
+        testConnection { success in
+            if success {
+                isConnected = true
+                connectionStatus = "Connected to NeuroFlex"
+                
+                // Create a timer to poll every 100ms (10 times per second)
+                timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { _ in
+                    fetchAngleData()
+                }
+            } else {
+                isConnected = false
+                connectionStatus = "Connection Failed"
+                
+                // If simulation is enabled, use simulated data
+                if isSimulating {
+                    isConnected = true
+                    connectionStatus = "Using Simulated Data"
+                    
+                    // Create a timer to update simulated data
+                    timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { _ in
+                        simulateAngleData()
+                    }
+                }
+            }
         }
+    }
+    
+    // Test connection to Arduino
+    func testConnection(completion: @escaping (Bool) -> Void) {
+        guard let url = URL(string: arduinoURL) else {
+            completion(false)
+            return
+        }
+        
+        let task = URLSession.shared.dataTask(with: url) { _, response, error in
+            if let error = error {
+                print("Connection error: \(error.localizedDescription)")
+                DispatchQueue.main.async {
+                    completion(false)
+                }
+                return
+            }
+            
+            if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 {
+                DispatchQueue.main.async {
+                    completion(true)
+                }
+            } else {
+                DispatchQueue.main.async {
+                    completion(false)
+                }
+            }
+        }
+        task.resume()
     }
     
     // Stop polling
@@ -235,25 +297,20 @@ struct HomeView: View {
         timer = nil
         isConnected = false
         connectionStatus = "Not Connected"
+        angle = 0
     }
     
     // Fetch angle data from Arduino
     func fetchAngleData() {
-        // In a real app, you would make an HTTP request to the Arduino
-        // For now, we'll simulate the data for demo purposes
-        // The Arduino would be at 192.168.4.1
-        
-        // Simulate angle changes for demo
-        let randomChange = Int.random(in: -5...5)
-        angle = max(0, min(230, angle + randomChange))
-        
-        // In a real implementation, you would use URLSession to fetch data:
-        /*
-        guard let url = URL(string: "http://192.168.4.1") else { return }
+        guard let url = URL(string: arduinoURL) else { return }
         
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
             if let error = error {
                 print("Error: \(error.localizedDescription)")
+                DispatchQueue.main.async {
+                    self.isConnected = false
+                    self.connectionStatus = "Connection Lost"
+                }
                 return
             }
             
@@ -264,6 +321,7 @@ struct HomeView: View {
                    let angleValue = json["angle"] as? Int {
                     DispatchQueue.main.async {
                         self.angle = angleValue
+                        self.lastFetchTime = Date()
                     }
                 }
             } catch {
@@ -271,7 +329,13 @@ struct HomeView: View {
             }
         }
         task.resume()
-        */
+    }
+    
+    // Simulate angle data
+    func simulateAngleData() {
+        let randomChange = Int.random(in: -5...5)
+        angle = max(0, min(230, angle + randomChange))
+        lastFetchTime = Date()
     }
 }
 
