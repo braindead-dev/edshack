@@ -111,6 +111,8 @@ struct WelcomeView: View {
 }
 
 struct HomeView: View {
+    @Binding var selectedTab: Int
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             HStack {
@@ -141,7 +143,7 @@ struct HomeView: View {
                     .foregroundColor(Color(red: 0.18, green: 0.21, blue: 0.33))
                 
                 Button(action: {
-                    // Start session action
+                    selectedTab = 1  // Switch to session tab
                 }) {
                     Text("Start Session")
                         .font(.system(size: 16, weight: .semibold))
@@ -172,7 +174,7 @@ struct HomeView: View {
                             .frame(width: 80, height: 80)
                         
                         Circle()
-                            .trim(from: 0, to: 0.7)
+                            .trim(from: 0, to: 0.4)
                             .stroke(Color(red: 0.4, green: 0.45, blue: 0.9), lineWidth: 12)
                             .frame(width: 80, height: 80)
                             .rotationEffect(.degrees(-90))
@@ -529,7 +531,7 @@ struct MainTabView: View {
     var body: some View {
         ZStack(alignment: .bottom) {
             TabView(selection: $selectedTab) {
-                HomeView()
+                HomeView(selectedTab: $selectedTab)
                     .tag(0)
                 
                 SessionView()
