@@ -1,11 +1,11 @@
-#include <WiFiS3.h>           // UNO R4 WiFi library
+#include <WiFiS3.h>
 #include <LiquidCrystal.h>
 #include <WiFiClient.h>
-#include <ArduinoHttpClient.h>  // ⚠️ You must install this from Library Manager
+#include <ArduinoHttpClient.h>
 
 // WiFi credentials
-const char* ssid     = "iPhone";
-const char* password = "12345678";
+const char* ssid     = "iPhoneIvan";
+const char* password = "Ivan1234";
 
 // LCD pins: RS, E, D4, D5, D6, D7
 LiquidCrystal lcd(8, 9, 10, 11, 12, 13);
