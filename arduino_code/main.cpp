@@ -1,52 +1,60 @@
-#include <Wire.h>
-#include <LiquidCrystal_I2C.h>
+#include <LiquidCrystal.h>
 
-// Initialize LCD at I2C address 0x27 with 16 columns and 2 rows
-LiquidCrystal_I2C lcd(0x27, 16, 2);
+// Order: RS, E, D4, D5, D6, D7
+LiquidCrystal lcd(7, 8, 9, 10, 11, 12);
 
-// Pin Definitions
-const int potPin = A0;
-const int buzzerPin = 9;
-
-// Threshold angle in degrees
-const int angleThreshold = 170;
+int potPin = A0;
+int potValue = 0;
+int angle = 0;
+int buzzerPin = 4;
+int redLed = 6;
+int greenLed = 2;
 
 void setup() {
-  // Initialize LCD
-  lcd.init();
-  lcd.backlight();
-
-  // Buzzer pin as output
-  pinMode(buzzerPin, OUTPUT);
-  digitalWrite(buzzerPin, LOW);
-
-  // Welcome screen
-  lcd.setCursor(0, 0);
+  lcd.begin(16, 2); // Set up LCD 16x2
   lcd.print("NeuroFlex Ready");
   delay(1500);
   lcd.clear();
+  pinMode(buzzerPin, OUTPUT);
+  pinMode(redLed, OUTPUT);
+  pinMode(greenLed, OUTPUT);
 }
 
 void loop() {
-  int potValue = analogRead(potPin);         // Read analog value (0–1023)
-  int angle = map(potValue, 0, 1023, 0, 180); // Map to degrees
-
-  // Display angle on LCD
+  potValue = analogRead(potPin);
+  angle = map(potValue, 0, 1023, 0, 230);
+  
   lcd.setCursor(0, 0);
-  lcd.print("Angle: ");
-  lcd.print(angle);
-  lcd.print(" deg  ");  // Extra spaces to clear old chars
+    lcd.print("Angle: ");
+    lcd.print(angle);
+    lcd.print(" deg  "); // Add spaces to overwrite old characters
 
-  // Check if angle exceeds threshold
-  if (angle >= angleThreshold) {
-    digitalWrite(buzzerPin, HIGH);
+  if (angle < 170){
     lcd.setCursor(0, 1);
-    lcd.print(">> Overextended! <<");
-  } else {
-    digitalWrite(buzzerPin, LOW);
-    lcd.setCursor(0, 1);
-    lcd.print("                    "); // Clear line
+    lcd.print("Safe            ");
+    noTone(buzzerPin);
+    digitalWrite(redLed, LOW);
+    digitalWrite(greenLed, HIGH);
   }
-
-  delay(200); // Small delay for stability
+  else if (angle >= 170 && angle <= 180){
+    lcd.setCursor(0, 1);
+    lcd.print("Caution        ");
+    noTone(buzzerPin);
+    digitalWrite(greenLed, LOW);
+    digitalWrite(redLed, HIGH);
+    delay(50);
+    digitalWrite(redLed, LOW);
+    delay(50);
+  }
+  else {
+    lcd.setCursor(0, 1);
+    lcd.print("Hyperextending  ");
+    tone(buzzerPin, 500, 1);
+    digitalWrite(greenLed, LOW);
+    digitalWrite(redLed, HIGH);
+    delay(10);
+    digitalWrite(redLed, LOW);
+    delay(10);
+  }
+  delay(100);
 }

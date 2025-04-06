@@ -178,7 +178,7 @@ struct CustomTabBar: View {
                                 Image(systemName: item.icon)
                                     .font(.system(size: 24))
                                 Text(item.title)
-                                    .font(.system(size: 12))
+                                    .font(.system(size: 14))
                             }
                         }
                         .frame(width: UIScreen.main.bounds.width * 0.9 / CGFloat(items.count))
@@ -198,9 +198,9 @@ struct CustomTabBar: View {
                 .frame(height: 30)
         }
         .background(Color(red: 1.0, green: 1.0, blue: 0.992))
-        .clipShape(RoundedCorner(radius: 24, corners: [.topLeft, .topRight]))
+        .clipShape(RoundedCorner(radius: 32, corners: [.topLeft, .topRight]))
         .overlay(
-            RoundedCorner(radius: 24, corners: [.topLeft, .topRight])
+            RoundedCorner(radius: 32, corners: [.topLeft, .topRight])
                 .stroke(Color.gray.opacity(0.2), lineWidth: 1)
         )
         .edgesIgnoringSafeArea(.bottom)
@@ -229,7 +229,7 @@ struct MainTabView: View {
     
     let tabItems = [
         TabBarItem(icon: "house.fill", title: "Home", tag: 0),
-        TabBarItem(icon: "circle", title: "Session", tag: 1),
+        TabBarItem(icon: "circle.grid.cross.fill", title: "Session", tag: 1),
         TabBarItem(icon: "clock", title: "History", tag: 2),
         TabBarItem(icon: "gearshape.fill", title: "Settings", tag: 3)
     ]
