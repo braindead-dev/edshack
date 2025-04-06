@@ -10,10 +10,10 @@ const char* password = "12345678";
 WiFiServer server(80);
 
 // LCD pins: RS, E, D4, D5, D6, D7
-LiquidCrystal lcd(8, 9, 10, 11, 12, 13);
+LiquidCrystal lcd(13, 12, 11, 10, 9, 8);
 
 // Sensor pins
-int potPin = A0;
+int potPin = A5;
 int buzzerPin = 0;
 int redLed = 1;
 
@@ -110,17 +110,17 @@ void updateAngle() {
   // Update LCD display
   lcd.setCursor(0, 0);
   lcd.print("Angle: ");
-  lcd.print(angle);
+  lcd.print(angle - 10);
   lcd.print(" deg  ");
 
   // Update feedback based on angle
-  if (angle < 170) {
+  if (angle < 150) {
     lcd.setCursor(0, 1);
     lcd.print("Safe            ");
     noTone(buzzerPin);
     digitalWrite(redLed, LOW);
   }
-  else if (angle >= 170 && angle <= 180) {
+  else if (angle >= 150 && angle <= 160) {
     lcd.setCursor(0, 1);
     lcd.print("Caution        ");
     noTone(buzzerPin);

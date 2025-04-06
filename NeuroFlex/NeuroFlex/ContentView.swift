@@ -110,123 +110,178 @@ struct WelcomeView: View {
     }
 }
 
+struct TimeOverextendedGraph: View {
+    var body: some View {
+        GeometryReader { geometry in
+            Path { path in
+                let width = geometry.size.width
+                let height = geometry.size.height
+                let points = [0.8, 0.65, 0.7, 0.5, 0.3]  // Start high, end lower
+                
+                path.move(to: CGPoint(x: 0, y: height * 0.8))
+                
+                // Create smooth curve through points
+                for i in 0..<points.count {
+                    let x = width * CGFloat(i) / CGFloat(points.count - 1)
+                    let y = height * (1 - points[i])
+                    
+                    if i == 0 {
+                        path.move(to: CGPoint(x: x, y: y))
+                    } else {
+                        let control1 = CGPoint(x: width * CGFloat(i - 1) / CGFloat(points.count - 1) + width / CGFloat(points.count - 1) / 2,
+                                             y: height * (1 - points[i - 1]))
+                        let control2 = CGPoint(x: x - width / CGFloat(points.count - 1) / 2,
+                                             y: y)
+                        path.addCurve(to: CGPoint(x: x, y: y),
+                                    control1: control1,
+                                    control2: control2)
+                    }
+                }
+            }
+            .stroke(Color(red: 0.4, green: 0.45, blue: 0.9), lineWidth: 2)
+        }
+    }
+}
+
 struct HomeView: View {
     @Binding var selectedTab: Int
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 0) {
-            HStack {
-                Text("NeuroFlex")
-                    .font(.system(size: 32, weight: .bold))
-                    .foregroundColor(Color(red: 0.18, green: 0.21, blue: 0.33))
-                
-                Spacer()
-                
-                Image("avatar")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 32, height: 32)
-                    .clipShape(Circle())
-                    .padding(.trailing, 20)
-            }
-            .padding(.leading, 20)
-            .padding(.top, 8)
-            
-            // Welcome Card
-            VStack(alignment: .leading, spacing: 12) {
-                Text("Welcome back!")
-                    .font(.system(size: 24, weight: .bold))
-                    .foregroundColor(Color(red: 0.18, green: 0.21, blue: 0.33))
-                
-                Text("Let's get started with a session")
-                    .font(.system(size: 16))
-                    .foregroundColor(Color(red: 0.18, green: 0.21, blue: 0.33))
-                
-                Button(action: {
-                    selectedTab = 1  // Switch to session tab
-                }) {
-                    Text("Start Session")
-                        .font(.system(size: 16, weight: .semibold))
-                        .foregroundColor(.white)
-                        .padding(.horizontal, 24)
-                        .padding(.vertical, 12)
-                        .background(
-                            Capsule()
-                                .fill(Color(red: 0.4, green: 0.45, blue: 0.9))
-                        )
-                }
-                .padding(.top, 4)
-            }
-            .padding(20)
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .background(Color.white)
-            .cornerRadius(16)
-            .shadow(color: Color.black.opacity(0.05), radius: 10, x: 0, y: 4)
-            .padding(.horizontal, 20)
-            .padding(.top, 20)
-            
-            HStack(spacing: 16) {
-                // Live Angle Card
-                VStack(spacing: 12) {
-                    ZStack {
-                        Circle()
-                            .stroke(Color(red: 0.9, green: 0.92, blue: 0.95), lineWidth: 12)
-                            .frame(width: 80, height: 80)
-                        
-                        Circle()
-                            .trim(from: 0, to: 0.4)
-                            .stroke(Color(red: 0.4, green: 0.45, blue: 0.9), lineWidth: 12)
-                            .frame(width: 80, height: 80)
-                            .rotationEffect(.degrees(-90))
-                        
-                        Text("150°")
-                            .font(.system(size: 24, weight: .bold))
-                            .foregroundColor(Color(red: 0.18, green: 0.21, blue: 0.33))
-                    }
-                    
-                    Text("Live Angle")
-                        .font(.system(size: 16))
+        ScrollView {
+            VStack(alignment: .leading, spacing: 0) {
+                HStack {
+                    Text("NeuroFlex")
+                        .font(.system(size: 32, weight: .bold))
                         .foregroundColor(Color(red: 0.18, green: 0.21, blue: 0.33))
-                }
-                .frame(maxWidth: .infinity)
-                .padding(.vertical, 20)
-                .background(Color.white)
-                .cornerRadius(16)
-                .shadow(color: Color.black.opacity(0.05), radius: 10, x: 0, y: 4)
-                
-                // Safe Time Card
-                VStack(spacing: 4) {
-                    Image("love_bear")
+                    
+                    Spacer()
+                    
+                    Image("avatar")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(width: 55, height: 55)
-                    
-                    Text("3 mins")
+                        .frame(width: 32, height: 32)
+                        .clipShape(Circle())
+                        .padding(.trailing, 20)
+                }
+                .padding(.leading, 20)
+                .padding(.top, 8)
+                
+                // Welcome Card
+                VStack(alignment: .leading, spacing: 12) {
+                    Text("Welcome back!")
                         .font(.system(size: 24, weight: .bold))
                         .foregroundColor(Color(red: 0.18, green: 0.21, blue: 0.33))
                     
-                    Text("Strain Time Today")
+                    Text("Let's get started with a session")
                         .font(.system(size: 16))
                         .foregroundColor(Color(red: 0.18, green: 0.21, blue: 0.33))
+                    
+                    Button(action: {
+                        selectedTab = 1  // Switch to session tab
+                    }) {
+                        Text("Start Session")
+                            .font(.system(size: 16, weight: .semibold))
+                            .foregroundColor(.white)
+                            .padding(.horizontal, 24)
+                            .padding(.vertical, 12)
+                            .background(
+                                Capsule()
+                                    .fill(Color(red: 0.4, green: 0.45, blue: 0.9))
+                            )
+                    }
+                    .padding(.top, 4)
                 }
-                .frame(maxWidth: .infinity)
-                .padding(.vertical, 20)
+                .padding(20)
+                .frame(maxWidth: .infinity, alignment: .leading)
                 .background(Color.white)
                 .cornerRadius(16)
                 .shadow(color: Color.black.opacity(0.05), radius: 10, x: 0, y: 4)
+                .padding(.horizontal, 20)
+                .padding(.top, 20)
+                
+                HStack(spacing: 16) {
+                    // Live Angle Card
+                    VStack(spacing: 12) {
+                        ZStack {
+                            Circle()
+                                .stroke(Color(red: 0.9, green: 0.92, blue: 0.95), lineWidth: 12)
+                                .frame(width: 80, height: 80)
+                            
+                            Circle()
+                                .trim(from: 0, to: 0.4)
+                                .stroke(Color(red: 0.4, green: 0.45, blue: 0.9), lineWidth: 12)
+                                .frame(width: 80, height: 80)
+                                .rotationEffect(.degrees(-90))
+                            
+                            Text("150°")
+                                .font(.system(size: 24, weight: .bold))
+                                .foregroundColor(Color(red: 0.18, green: 0.21, blue: 0.33))
+                        }
+                        
+                        Text("Live Angle")
+                            .font(.system(size: 16))
+                            .foregroundColor(Color(red: 0.18, green: 0.21, blue: 0.33))
+                    }
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 20)
+                    .background(Color.white)
+                    .cornerRadius(16)
+                    .shadow(color: Color.black.opacity(0.05), radius: 10, x: 0, y: 4)
+                    
+                    // Safe Time Card
+                    VStack(spacing: 4) {
+                        Image("love_bear")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 55, height: 55)
+                        
+                        Text("3 mins")
+                            .font(.system(size: 24, weight: .bold))
+                            .foregroundColor(Color(red: 0.18, green: 0.21, blue: 0.33))
+                        
+                        Text("Strain Time Today")
+                            .font(.system(size: 16))
+                            .foregroundColor(Color(red: 0.18, green: 0.21, blue: 0.33))
+                    }
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 20)
+                    .background(Color.white)
+                    .cornerRadius(16)
+                    .shadow(color: Color.black.opacity(0.05), radius: 10, x: 0, y: 4)
+                }
+                .padding(.horizontal, 20)
+                .padding(.top, 20)
+                
+                // Time Overextended Card
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("Time Overextended")
+                        .font(.system(size: 24, weight: .bold))
+                        .foregroundColor(Color(red: 0.18, green: 0.21, blue: 0.33))
+                    
+                    Text("2 Overextensions")
+                        .font(.system(size: 18))
+                        .foregroundColor(Color(red: 0.18, green: 0.21, blue: 0.33))
+                        .padding(.bottom, 0)
+                    
+                    TimeOverextendedGraph()
+                        .frame(height: 120)
+                }
+                .padding(20)
+                .frame(maxWidth: .infinity)
+                .background(Color.white)
+                .cornerRadius(16)
+                .shadow(color: Color.black.opacity(0.05), radius: 10, x: 0, y: 4)
+                .padding(.horizontal, 20)
+                .padding(.top, 16)
             }
-            .padding(.horizontal, 20)
-            .padding(.top, 20)
-            
-            Spacer()
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color(red: 0.988, green: 0.976, blue: 0.961).ignoresSafeArea())
     }
 }
 
 struct SessionView: View {
-    @State private var angle: Int = 0
+    @State private var angle: Int = 10
     @State private var isConnected: Bool = false
     @State private var connectionStatus: String = "Not Connected"
     @State private var timer: Timer? = nil
@@ -254,7 +309,7 @@ struct SessionView: View {
                     .font(.system(size: 24, weight: .bold))
                     .foregroundColor(Color(red: 0.18, green: 0.21, blue: 0.33))
                 
-                Text("\(angle)°")
+                Text("\(angle - 10)°")
                     .font(.system(size: 72, weight: .bold))
                     .foregroundColor(angleColor)
                 
