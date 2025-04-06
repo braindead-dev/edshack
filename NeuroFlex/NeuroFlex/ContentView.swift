@@ -116,7 +116,6 @@ struct HomeView: View {
     @State private var connectionStatus: String = "Not Connected"
     @State private var timer: Timer? = nil
     @State private var lastFetchTime: Date = Date()
-    @State private var isSimulating: Bool = false
     
     // Arduino server URL
     private let arduinoURL = "http://192.168.4.1"
@@ -190,11 +189,6 @@ struct HomeView: View {
             }
             .padding(.horizontal)
             
-            // Simulation toggle
-            Toggle("Simulate Data", isOn: $isSimulating)
-                .padding(.horizontal)
-                .padding(.top, 10)
-            
             Spacer()
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -247,17 +241,6 @@ struct HomeView: View {
             } else {
                 isConnected = false
                 connectionStatus = "Connection Failed"
-                
-                // If simulation is enabled, use simulated data
-                if isSimulating {
-                    isConnected = true
-                    connectionStatus = "Using Simulated Data"
-                    
-                    // Create a timer to update simulated data
-                    timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { _ in
-                        simulateAngleData()
-                    }
-                }
             }
         }
     }
@@ -329,13 +312,6 @@ struct HomeView: View {
             }
         }
         task.resume()
-    }
-    
-    // Simulate angle data
-    func simulateAngleData() {
-        let randomChange = Int.random(in: -5...5)
-        angle = max(0, min(230, angle + randomChange))
-        lastFetchTime = Date()
     }
 }
 
