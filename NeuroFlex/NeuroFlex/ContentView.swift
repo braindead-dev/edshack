@@ -167,7 +167,6 @@ struct CustomTabBar: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            Divider()
             GeometryReader { geometry in
                 HStack(spacing: 0) {
                     Spacer()
@@ -196,8 +195,32 @@ struct CustomTabBar: View {
             }
             .frame(height: 80)
         }
-        .background(Color(red: 1.0, green: 1.0, blue: 0.992))
+        .clipShape(RoundedCorner(radius: 24, corners: [.topLeft, .topRight]))
+        .background(
+            Color(red: 1.0, green: 1.0, blue: 0.992)
+        )
+        .overlay(
+            RoundedCorner(radius: 24, corners: [.topLeft, .topRight])
+                .stroke(Color.gray.opacity(0.2), lineWidth: 1)
+        )
         .edgesIgnoringSafeArea(.bottom)
+    }
+}
+
+// Helper extension to create partial rounded corners
+extension View {
+    func corners(_ corners: UIRectCorner) -> some View {
+        clipShape(RoundedCorner(radius: 24, corners: corners))
+    }
+}
+
+struct RoundedCorner: Shape {
+    var radius: CGFloat = .infinity
+    var corners: UIRectCorner = .allCorners
+
+    func path(in rect: CGRect) -> Path {
+        let path = UIBezierPath(roundedRect: rect, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+        return Path(path.cgPath)
     }
 }
 
