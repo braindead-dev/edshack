@@ -132,7 +132,7 @@ struct HomeView: View {
             
             HStack(spacing: 16) {
                 // Live Angle Card
-                VStack(spacing: 8) {
+                VStack(spacing: 12) {
                     ZStack {
                         Circle()
                             .stroke(Color(red: 0.9, green: 0.92, blue: 0.95), lineWidth: 12)
@@ -160,17 +160,17 @@ struct HomeView: View {
                 .shadow(color: Color.black.opacity(0.05), radius: 10, x: 0, y: 4)
                 
                 // Safe Time Card
-                VStack(spacing: 8) {
+                VStack(spacing: 4) {
                     Image("love_bear")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(width: 40, height: 40)
+                        .frame(width: 55, height: 55)
                     
-                    Text("4h 12m")
+                    Text("12 mins")
                         .font(.system(size: 24, weight: .bold))
                         .foregroundColor(Color(red: 0.18, green: 0.21, blue: 0.33))
                     
-                    Text("Safe Time Today")
+                    Text("Strain Time Today")
                         .font(.system(size: 16))
                         .foregroundColor(Color(red: 0.18, green: 0.21, blue: 0.33))
                 }
