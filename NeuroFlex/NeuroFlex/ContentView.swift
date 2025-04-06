@@ -148,53 +148,78 @@ struct SettingsView: View {
     }
 }
 
+struct TabBarItem: Identifiable {
+    let id = UUID()
+    let icon: String
+    let title: String
+    let tag: Int
+}
+
+struct CustomTabBar: View {
+    @Binding var selectedTab: Int
+    let items: [TabBarItem]
+    
+    var body: some View {
+        VStack(spacing: 0) {
+            Divider()
+            GeometryReader { geometry in
+                HStack(spacing: 0) {
+                    Spacer()
+                    HStack(spacing: 0) {
+                        ForEach(items) { item in
+                            Button(action: {
+                                selectedTab = item.tag
+                            }) {
+                                VStack(spacing: 4) {
+                                    Image(systemName: item.icon)
+                                    Text(item.title)
+                                        .font(.caption)
+                                }
+                            }
+                            .frame(width: (geometry.size.width * 0.8) / CGFloat(items.count))
+                            .foregroundColor(selectedTab == item.tag ? 
+                                Color(red: 0.216, green: 0.227, blue: 0.373) : 
+                                Color(red: 0.706, green: 0.722, blue: 0.733))
+                        }
+                    }
+                    .frame(width: geometry.size.width * 0.8)
+                    Spacer()
+                }
+            }
+            .frame(height: 49)
+        }
+        .background(Color(red: 1.0, green: 1.0, blue: 0.992))
+        .edgesIgnoringSafeArea(.bottom)
+    }
+}
+
 struct MainTabView: View {
     @State private var selectedTab = 0
     
+    let tabItems = [
+        TabBarItem(icon: "house.fill", title: "Home", tag: 0),
+        TabBarItem(icon: "circle", title: "Session", tag: 1),
+        TabBarItem(icon: "clock", title: "History", tag: 2),
+        TabBarItem(icon: "gearshape.fill", title: "Settings", tag: 3)
+    ]
+    
     var body: some View {
-        TabView(selection: $selectedTab) {
-            HomeView()
-                .tabItem {
-                    VStack {
-                        Image(systemName: "house.fill")
-                        Text("Home")
-                    }
-                }
-                .tag(0)
+        ZStack(alignment: .bottom) {
+            TabView(selection: $selectedTab) {
+                HomeView()
+                    .tag(0)
+                
+                SessionView()
+                    .tag(1)
+                
+                HistoryView()
+                    .tag(2)
+                
+                SettingsView()
+                    .tag(3)
+            }
             
-            SessionView()
-                .tabItem {
-                    VStack {
-                        Image(systemName: "circle")
-                        Text("Session")
-                    }
-                }
-                .tag(1)
-            
-            HistoryView()
-                .tabItem {
-                    VStack {
-                        Image(systemName: "clock")
-                        Text("History")
-                    }
-                }
-                .tag(2)
-            
-            SettingsView()
-                .tabItem {
-                    VStack {
-                        Image(systemName: "gearshape.fill")
-                        Text("Settings")
-                    }
-                }
-                .tag(3)
-        }
-        .tint(Color(red: 0.216, green: 0.227, blue: 0.373))  // #373A5F - Selected color
-        .onAppear {
-            // Set unselected tab color
-            UITabBar.appearance().unselectedItemTintColor = UIColor(red: 0.706, green: 0.722, blue: 0.733, alpha: 1.0)  // #B4B8BB
-            // Set tab bar background color
-            UITabBar.appearance().backgroundColor = UIColor(red: 1.0, green: 1.0, blue: 0.992, alpha: 1.0)  // #FFFFFD
+            CustomTabBar(selectedTab: $selectedTab, items: tabItems)
         }
     }
 }
