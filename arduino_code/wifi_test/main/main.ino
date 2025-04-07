@@ -114,13 +114,13 @@ void updateAngle() {
   lcd.print(" deg  ");
 
   // Update feedback based on angle
-  if (angle < 150) {
+  if (angle < 170) {
     lcd.setCursor(0, 1);
     lcd.print("Safe            ");
     noTone(buzzerPin);
     digitalWrite(redLed, LOW);
   }
-  else if (angle >= 150 && angle <= 160) {
+  else if (angle >= 170 && angle <= 180) {
     lcd.setCursor(0, 1);
     lcd.print("Caution        ");
     noTone(buzzerPin);
