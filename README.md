@@ -1,1 +1,4 @@
 # NeuroFlex
+
+Neuroflex is a smart wearable system designed to assist individuals with Ehlers-Danlos Syndrome (EDS) in retraining their joint movement and reducing elbow hyperextension. Built using an Arduino Uno, a rotary potentiometer, and a 16x2 LCD module, the device monitors elbow angles in real time and provides immediate feedback through an LED and piezo buzzer when unsafe movement is detected. The hardware was programmed using Arduino C++ to ensure accurate detection and reliable response. To support long-term rehabilitation, we developed an iOS companion app in Swift that receives angle data and logs the duration of daily hyperextension events, helping users track trends and measure progress over time. Neuroflex was developed during BearHack 2025 at UC Riverside as a multidisciplinary solution combining biomedical engineering, embedded systems, and mobile development to empower users with increased movement awareness and independence.
+
